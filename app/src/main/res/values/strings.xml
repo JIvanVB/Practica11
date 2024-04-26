@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Practica11</string>
+    <string name="titulo">CRUD con Firebase</string>
+    <string name="tabla">Tabla de usuarios</string>
+    <string name="id">ID</string>
+    <string name="nombre_ususario">Nombre del usuario</string>
+    <string name="mod">Modificar</string>
+    <string name="reg">Registrar</string>
+    <string name="eli">Eliminar</string>
+    <string name="lista_usuarios">Lista de usuarios</string>
+</resources>
