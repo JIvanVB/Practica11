@@ -232,11 +232,15 @@ class MainActivity : AppCompatActivity() {
 
         dbref.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val value = snapshot.value
-                if (value !is String)  return
-                if (value !is Usuario) return
-                listUsu.add(value)
-                ada.notifyDataSetChanged()
+                val id = snapshot.child("id").getValue(Int::class.java)
+                val nombre = snapshot.child("nombre").getValue(String::class.java)
+                id?.let { idValue ->
+                    nombre?.let { nombreValue ->
+                        val usuario = Usuario(idValue, nombreValue)
+                        listUsu.add(usuario)
+                        ada.notifyDataSetChanged()
+                    }
+                }
             }
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {ada.notifyDataSetChanged()}
             override fun onChildRemoved(snapshot: DataSnapshot) {}
@@ -249,7 +253,6 @@ class MainActivity : AppCompatActivity() {
             val a = AlertDialog.Builder(this@MainActivity)
             a.setCancelable(true)
             a.setTitle("Usuario Seleccionado")
-
             var msg = "ID : " + luc.id + "\n\n"
             msg += "NOMBRE : " + luc.nombre
 
